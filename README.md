@@ -3,9 +3,9 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=augustolujang&label=Profile%20views&color=ff0000&style=plastic" alt="augustolujang" /> </p>
 
-- 🔭 Realizando la carrera de Desarrollo Full Stack [Coderhouse](https://www.coderhouse.com/online/carrera-online-desarrollo-fullstack)
+- 🔭 Realizando la carrera de Desarrollo Full Stack en [Coderhouse](https://www.coderhouse.com/online/carrera-online-desarrollo-fullstack)
 
-- 🌱 Aprendiendo **Python y desarrollo web full stack**
+- 🌱 Aprendiendo **Python y desarrollo full stack**
 
 - 📫 Contacto **augustolg98@gmail.com**
 
