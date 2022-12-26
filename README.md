@@ -3,7 +3,7 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=augustolujang&label=Profile%20views&color=ff0000&style=plastic" alt="augustolujang" /> </p>
 
-- 🔭 Realizando el curso de JS [https://github.com/AugustoLujanG/PreEntrega1-LujanGarcia.git](https://github.com/AugustoLujanG/PreEntrega1-LujanGarcia.git)
+- 🔭 Realizando la carrera de Desarrollo Full Stack [Coderhouse](https://www.coderhouse.com/online/carrera-online-desarrollo-fullstack)
 
 - 🌱 Aprendiendo **Python y desarrollo web full stack**
 
