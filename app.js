@@ -2,83 +2,119 @@ menu()
 
 function menu()
 {
-    let carrito = ""
     let opcion
+    let total
 
     do {
-        opcion = prompt("1- Agregar Ítem \n2- Borrar Ítem \n3- Finalizar compra")
+        opcion = prompt("1- Ingresar productos\n2- Ingresar tarjeta\n3- Finalizar compra")
         opcion = parseInt(opcion)
 
         switch (opcion) {
             case 1:
-                carrito = carrito + agregarItem()
+                total = ingresarProdutos()
+                alert("Total a pagar: " + total)
                 break
             case 2:
-                carrito = borrarItem(carrito)
-                break;
+                ingresarTarjeta()
+                break
             case 3:
-                console.log("salir")
+                alert("Finalizando compra...")
                 break
             default:
                 alert("Opcion invalida!")
         }
     } while (opcion != 3)
 
-    alert(carrito)
+    if(total != 0)
+    {
+        alert("Total a pagar: " + total)
+    }
+    else
+    {
+        alert("No hay productos")
+    }
 
 }
 
-function agregarItem()
+function ingresarProdutos()
 {
-    let opcion
-    let carrito = ""
+    let total = 0.00
+    let cantidadProd = prompt("Ingrese cantidad de productos a cargar: ")
+    cantidadProd = parseInt(cantidadProd)
+    for(let i = 1; i <= cantidadProd; i++)
+    {
+        precio = prompt("Ingrese precio de producto " + i + ": ")
+        precio = parseFloat(precio)
+        total = total + precio
+    }
+    return total
+}
+
+function ingresarTarjeta()
+{
+    let titular
+    let numero
+    const fecha = new Date()
+    let fechaVencMes
+    let fechaVencAnio
+    let cvv
+
+    titular = prompt("Ingrese titular de la tarjeta: ")
 
     do
     {
-        opcion = prompt("1- Producto 1: $1000\n2- Producto 2: $1250\n3- Producto 3: $1500\n4- Salir")
-        opcion = parseInt(opcion)
-        if (opcion <= 4)
+        numero = prompt("Ingrese número de tarjeta (sin espacio, guiones ni puntos): ")
+        if(numero.length != 16)
         {
-            if (opcion == 1)
-            {
-                carrito = carrito + "prod 1" + " - "
-            }
-            else
-            if (opcion == 2)
-            {
-                carrito = carrito + "prod 2" + " - "
-            }
-            else
-            if (opcion == 3)
-            {
-                carrito = carrito + "prod 3" + " - "
-            }
+            alert("Número incorrecto! Debe contener 16 dígitos")
+        }
+    }while(numero.length != 16)
+    
+    do
+    {
+        fechaVencAnio = prompt("Ingrese SÓLO año de vencimiento (AAAA): ")
+        if(fechaVencAnio > 9999 || fechaVencAnio < 1000)
+        {
+            alert("FECHA INCORRECTA!")
         }
         else
         {
-            alert("Opcion invalida!")
-        }
-    }while(opcion != 4)
-
-    return carrito
-}
-
-function borrarItem (carrito)
-{
-    let borrar
-    alert(carrito)
-    for (producto in carrito)
-    {
-        do
-        {
-            borrar = prompt("Desea borrar el producto " + producto + " (S/N): ")
-            if(borrar == 's' || borrar == 'S')
+            if(fechaVencAnio >= fecha.getFullYear())
             {
-                carrito = carrito - producto
+                do
+                {
+                    fechaVencMes = prompt("Ingrese SÓLO mes de vencimiento (MM): ")
+                    if(fechaVencMes > 12 || fechaVencMes < 1)
+                    {
+                        alert("FECHA INCORRECTA!")
+                    }
+                    else
+                    {
+                        if(fechaVencAnio == fecha.getFullYear())
+                        {
+                            if(fechaVencMes < fecha.getMonth() + 1)
+                            {
+                                alert("TARJETA VENCIDA!")
+                            }
+                            else
+                            {
+                                do
+                                {
+                                    cvv = prompt("Ingrese código de seguridad: ")
+                                    if(cvv.length != 3)
+                                    {
+                                        alert("Código incorrecto")
+                                    }
+                                }while(cvv.length != 3)
+                            }
+                        }
+                    }
+                }while(fechaVencMes > 12 || fechaVencMes < 1)
             }
-        }while(borrar!='n' && borrar!='N' && borrar!='s' && borrar!='S')
-
-    }
-
-    return carrito
+            else
+            {
+                alert("TARJETA VENCIDA!")
+            }
+        }
+    }while(fechaVencAnio > 9999 || fechaVencAnio < 1000)
 }
